@@ -9,7 +9,7 @@ with open(os.path.join(os.path.realpath(os.path.dirname(__file__)), 'httpbin', '
 setup(
     name="httpbin",
     version=version,
-    description="HTTP Request and Response Service",
+    description="HTTP Request and Response Service....",
     long_description="A simple HTTP Request & Response Service, written in Python + Flask.",
 
     # The project URL.
