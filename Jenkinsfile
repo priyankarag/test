@@ -20,17 +20,7 @@ pipeline {
           sh 'sudo docker push gcr.io/maximal-run-343007/postmanlabs'
       }
     }
-    stage('Deploy Image') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push("$BUILD_NUMBER")
-             dockerImage.push('latest')
 
-          }
-        }
-      }
-    }
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $imagename:$BUILD_NUMBER"
