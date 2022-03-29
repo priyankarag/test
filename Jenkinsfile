@@ -2,7 +2,6 @@ pipeline {
   environment {
     imagename = "test/postmanlabs"
     registryCredential = 'postman-dockerhub'
-    dockerImage = ''
   }
   agent any
   stages {
@@ -15,7 +14,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build imagename
+          sh "docker build -t imagename ."
         }
       }
     }
