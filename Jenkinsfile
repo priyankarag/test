@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Building image') {
       steps{
-          sh '''sudo docker build -t imagename . 
+          sh '''sudo docker build -t postmanlab . 
          '''
           sh '''sudo docker ps -a 
          '''
