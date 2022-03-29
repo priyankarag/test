@@ -6,9 +6,10 @@ pipeline {
             steps {
                 script {
                 echo 'Building..'
+                gcloud auth configure-docker
                 docker build -t testpostman .
                 docker ps -a
-           
+                echo 'build'
                 }
             }
      
