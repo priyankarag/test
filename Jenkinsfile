@@ -20,13 +20,5 @@ pipeline {
           sh 'sudo docker push gcr.io/maximal-run-343007/postmanlabs'
       }
     }
-
-    stage('Remove Unused docker image') {
-      steps{
-        sh 'sudo docker rmi $imagename:$BUILD_NUMBER'
-         sh 'sudo docker rmi $imagename:latest'
-
-      }
-    }
   }
 }
