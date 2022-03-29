@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    imagename = "test/postmanlabs"
+    imagename = "test-postmanlab"
     registryCredential = 'postman-dockerhub'
   }
   agent any
