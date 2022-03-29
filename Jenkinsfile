@@ -10,7 +10,7 @@ pipeline {
       steps {
           echo 'cloning'
         git([https://github.com/priyankarag/test.git', branch: 'main', credentialsId: 'auth'])
-            echo 'cloned'
+ 
       }
     }
     stage('Building image') {
