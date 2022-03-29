@@ -13,10 +13,10 @@ pipeline {
     }
     stage('Building image') {
       steps{
-          sh 'sudo docker build -t imagename . '
+          sh 'sudo docker build -t imagename:$BUILD_NUMBER . '
           sh 'sudo docker ps -a'
           sh 'gcloud auth configure-docker'
-          sh 'sudo docker tag imagename gcr.io/maximal-run-343007/postmanlabs'
+          sh 'sudo docker tag imagename:$BUILD_NUMBER gcr.io/maximal-run-343007/postmanlabs'
           sh 'sudo docker push gcr.io/maximal-run-343007/postmanlabs'
       }
     }
