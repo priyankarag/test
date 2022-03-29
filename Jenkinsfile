@@ -16,9 +16,9 @@ pipeline {
         script {
           sh 'sudo setfacl -m "g:docker:rw" /var/run/docker.sock'
           sh 'sudo addgroup --system docker'
-          sh "sudo adduser $USER docker"
-          sh "newgrp docker"
-          sh "docker build -t imagename ."
+          sh 'sudo adduser $USER docker'
+          sh 'newgrp docker'
+          sh 'docker build -t imagename .'
         }
       }
     }
