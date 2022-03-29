@@ -8,7 +8,6 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-          echo 'cloning'
         git([https://github.com/priyankarag/test.git', branch: 'main', credentialsId: 'auth'])
  
       }
