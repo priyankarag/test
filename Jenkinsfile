@@ -15,7 +15,7 @@ pipeline {
       steps{
           sh 'sudo docker build -t imagename . '
           sh 'sudo docker ps -a'
-          sh 'sudo docker run -dp 8086:8086 --name postmanlb imagename'
+          sh 'sudo docker run -dp 8087:8087 --name post imagename'
           sh 'sudo docker tag postman gcr.io/maximal-run-343007/postmanlabs'
           sh 'sudo docker push gcr.io/maximal-run-343007/postmanlabs'
       }
