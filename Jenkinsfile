@@ -15,7 +15,7 @@ pipeline {
       steps{
           sh 'sudo docker build -t postmanlab . '
           sh 'sudo docker ps -a'
-          sh 'sudo docker run postmanlab -p 8085:8085 -d'
+          sh 'sudo docker run -dp 8085:8085 --name postmanlab postmanlab'
       }
     }
     stage('Deploy Image') {
