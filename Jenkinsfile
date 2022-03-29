@@ -15,7 +15,7 @@ pipeline {
       steps{
           sh 'sudo docker build -t imagename . '
           sh 'sudo docker ps -a'
-          sh 'sudo docker run -dp 8086:8086 --name imagename imagename'
+          sh 'sudo docker run -dp 8086:8086 --name postman imagename'
       }
     }
     stage('Deploy Image') {
