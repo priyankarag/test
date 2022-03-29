@@ -1,28 +1,42 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                script {
-                echo 'Building..'
-                gcloud auth configure-docker
-                docker build -t testpostman .
-                docker ps -a
-                echo 'build'
-                }
-            }
-     
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing. python.'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+  environment {
+    imagename = "test/postmanlabs"
+    registryCredential = 'postman-dockerhub'
+    dockerImage = ''
+  }
+  agent any
+  stages {
+    stage('Cloning Git') {
+      steps {
+          echo 'cloning'
+        git([https://github.com/priyankarag/test.git', branch: 'main', credentialsId: 'auth'])
+            echo 'cloned'
+      }
     }
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build imagename
+        }
+      }
+    }
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push("$BUILD_NUMBER")
+             dockerImage.push('latest')
+
+          }
+        }
+      }
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $imagename:$BUILD_NUMBER"
+         sh "docker rmi $imagename:latest"
+
+      }
+    }
+  }
 }
