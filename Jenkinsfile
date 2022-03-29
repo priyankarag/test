@@ -15,7 +15,6 @@ pipeline {
       steps{
           sh 'sudo docker build -t imagename . '
           sh 'sudo docker ps -a'
-          sh 'sudo docker run -dp 8090:8090 --name postlabmn imagename'
           sh 'gcloud auth configure-docker'
           sh 'sudo docker tag imagename gcr.io/maximal-run-343007/postmanlabs'
           sh 'sudo docker push gcr.io/maximal-run-343007/postmanlabs'
