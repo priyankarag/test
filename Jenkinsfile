@@ -14,9 +14,9 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          sh 'sudo chmod 777 /var/run/docker.sock'
-          sh 'sudo docker build -t imagename .'
-          sh 'sudo docker ps -a'
+          sh 'chmod 777 /var/run/docker.sock'
+          sh 'docker build -t imagename .'
+          sh 'docker ps -a'
         }
       }
     }
