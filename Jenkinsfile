@@ -19,6 +19,7 @@ pipeline {
           sh 'sudo adduser $USER docker'
           sh 'newgrp docker'
           sh 'docker build -t imagename .'
+          sh 'docker ps -a'
         }
       }
     }
