@@ -14,7 +14,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          sh "sudo setfacl -m "g:docker:rw" /var/run/docker.sock"
+          sudo setfacl -m "g:docker:rw" /var/run/docker.sock
           sh "sudo addgroup --system docker"
           sh "sudo adduser $USER docker"
           sh "newgrp docker"
