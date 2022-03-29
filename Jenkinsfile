@@ -13,10 +13,11 @@ pipeline {
     }
     stage('Building image') {
       steps{
-        script {
-          sh 'sudo docker build -t imagename .'
-          sh 'sudo docker ps -a'
-        }
+          sh '''sudo docker build -t imagename . 
+         '''
+          sh '''sudo docker ps -a 
+         '''
+        
       }
     }
     stage('Deploy Image') {
