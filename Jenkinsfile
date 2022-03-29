@@ -8,7 +8,7 @@ pipeline {
                 echo 'Building..'
                 docker build -t testpostman .
                 docker ps -a
-                docker run testpostman -p 8084:8084 -d
+           
                 }
             }
      
